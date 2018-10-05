@@ -1,0 +1,11 @@
+{
+  "name": "restaurant-finder",
+  "version": "1.0.0",
+  "description": "simple app for project 7 at OC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "koci54",
+  "license": "ISC"
+}

@@ -10,12 +10,23 @@
 </head>
 
 <body>
-  <div id="map"></div>
-  <div>sidebar</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col--5 mb-4">
+        <div id="map"></div>
+        <div class="places">
+          <h1>List of places</h1>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
-  <script src="app.js" defer></script>
+  <script src="https://maps.google.com/maps/api/js?key=AIzaSyBkPOD_JvZ2A5JFPDenEgozAnTTjPMOhNM&callback=initMap" async
+    defer></script>
+  <script type="text/javascript" src="app.js"></script>
 </body>
 
 </html>

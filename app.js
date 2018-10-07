@@ -195,9 +195,7 @@ const places = [
 
 console.log(places);
 
-function renderPlaces(restaurants) {
-  places.forEach(place => {
-    `<h1>${place.restaurantName}</h1>`;
-  });
-}
-console.log(renderPlaces(places));
+places.forEach(place => {
+  let output = `<p>${place.restaurantName}</p>`;
+  document.getElementById('restaurants').innerHTML += output;
+});

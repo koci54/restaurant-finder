@@ -59,6 +59,10 @@ const places = [
       },
       {
         stars: 5,
+        comment: 'OMG! But not many veggie options.'
+      },
+      {
+        stars: 5,
         comment: 'My favorite restaurant!'
       }
     ]
@@ -196,6 +200,26 @@ const places = [
 console.log(places);
 
 places.forEach(place => {
-  let output = `<p>${place.restaurantName}</p>`;
+  let output = `<p>${
+    place.restaurantName
+  }&nbsp<i class="fas fa-caret-down"></i></p>`;
   document.getElementById('restaurants').innerHTML += output;
+
+  let reviews = place.ratings;
+  reviews.forEach(review => {
+    let starAndComments = `<p>${review.stars} stars ${review.comment}</p>`;
+    document.getElementById('restaurants').innerHTML += starAndComments;
+  });
+
+  let triangleBtn = document.getElementsByClassName('fas fa-caret-down');
+  console.log(triangleBtn);
+
+  function logSmth() {
+    console.log('somthing');
+  }
+  triangleBtn[0].addEventListener('click', logSmth);
 });
+
+// function showReviews() {
+//   return console.log('clicked');
+// }

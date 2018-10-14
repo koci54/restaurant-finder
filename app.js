@@ -1,3 +1,7 @@
+// return objects into a single const map, infoWindow
+
+// const mappy =
+
 // Regular map
 let map;
 let infoWindow;
@@ -46,7 +50,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 const places = [
   {
-    id: 1,
     restaurantName: 'Steakhouse',
     address: '13, Hradcanska st. Prague',
     lat: 50.087617,
@@ -68,7 +71,6 @@ const places = [
     ]
   },
   {
-    id: 2,
     restaurantName: 'MeetBurger',
     address: '12, long st. Prague',
     lat: 50.087617,
@@ -86,7 +88,6 @@ const places = [
     ]
   },
   {
-    id: 3,
     restaurantName: 'Bakery Crusta',
     address: '39 Rue des Petites Écuries, 75010 Paris',
     lat: 50.0860663,
@@ -104,7 +105,6 @@ const places = [
     ]
   },
   {
-    id: 4,
     restaurantName: 'Trdelnik',
     address: '1 st, Prague',
     lat: 50.086151,
@@ -122,7 +122,6 @@ const places = [
     ]
   },
   {
-    id: 5,
     restaurantName: 'Las Adelitas',
     address: '9 st, Prague',
     lat: 50.086367,
@@ -140,7 +139,6 @@ const places = [
     ]
   },
   {
-    id: 6,
     restaurantName: 'Karavell',
     address: '39 Rue des Petites Écuries, 75010 Paris',
     lat: 50.08532,
@@ -158,7 +156,6 @@ const places = [
     ]
   },
   {
-    id: 7,
     restaurantName: 'BrewCoff Cafe',
     address: '39 st, Prague',
     lat: 50.086205,
@@ -176,7 +173,6 @@ const places = [
     ]
   },
   {
-    id: 8,
     restaurantName: 'Little Eataly',
     address: '4 st, Prague',
     location: {
@@ -199,27 +195,56 @@ const places = [
 
 console.log(places);
 
-places.forEach(place => {
-  let output = `<p>${
-    place.restaurantName
-  }&nbsp<i class="fas fa-caret-down"></i></p>`;
-  document.getElementById('restaurants').innerHTML += output;
+function showPlaces(data) {
+  data.forEach(restoName => {
+    let h3 = document.createElement('h3'); // is a node
+    h3.innerHTML = restoName.restaurantName;
+    let list = document.getElementById('restaurants');
+    list.appendChild(h3);
 
-  let reviews = place.ratings;
-  reviews.forEach(review => {
-    let starAndComments = `<p>${review.stars} stars ${review.comment}</p>`;
-    document.getElementById('restaurants').innerHTML += starAndComments;
+    let toggeRatingsBtn = document.createElement('button');
+    toggeRatingsBtn.setAttribute('class', 'toggleBtn');
+    h3.appendChild(toggeRatingsBtn);
+
+    toggeRatingsBtn.onclick = function() {
+      let displayValue = ul.style.display;
+      console.log(displayValue);
+      if (!displayValue) {
+        ul.style.display = 'block';
+      } else {
+        ul.style.display = '';
+      }
+    };
+
+    let ul = document.createElement('ul');
+    ul.setAttribute('id', `${restoName.restaurantName}`);
+    h3.appendChild(ul);
   });
+}
 
-  let triangleBtn = document.getElementsByClassName('fas fa-caret-down');
-  console.log(triangleBtn);
+showPlaces(places);
 
-  function logSmth() {
-    console.log('somthing');
-  }
-  triangleBtn[0].addEventListener('click', logSmth);
-});
+function getReviews(data) {
+  data.forEach(x => {
+    let placeId = x.restaurantName;
+    let ratings = x.ratings;
+    ratings.forEach(r => {
+      let stars = r.stars;
+      let comment = r.comment;
+      let li = document.createElement('li');
+      li.innerHTML = `${stars} ${comment}`;
+      let singlePlace = document.getElementById(placeId);
+      singlePlace.appendChild(li);
+    });
+  });
+}
 
-// function showReviews() {
-//   return console.log('clicked');
-// }
+getReviews(places);
+
+// use appendChild
+// createElement li
+// use documentObject
+// innerHTML = '';
+
+// li - dataAttribute to store the resto id- when I click - exact resto and look at the Attribute
+// object - getbyId. .dataSet. 'name' (it will return a value)

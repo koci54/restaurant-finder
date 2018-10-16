@@ -11,7 +11,7 @@ function initMap() {
     center: { lat: 40.0519752, lng: -76.314270999999 },
     zoom: 15,
     scrollwheel: false,
-    zoomControl: true
+    zoomControl: true,
   });
 
   infoWindow = new google.maps.InfoWindow({ map: map });
@@ -22,7 +22,7 @@ function initMap() {
       function(position) {
         var pos = {
           lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lng: position.coords.longitude,
         };
 
         infoWindow.setPosition(pos);
@@ -31,7 +31,7 @@ function initMap() {
       },
       function() {
         handleLocationError(true, infoWindow, map.getCenter());
-      }
+      },
     );
   } else {
     // Browser doesn't support Geolocation
@@ -44,7 +44,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setContent(
     browserHasGeolocation
       ? 'Error: The Geolocation service failed.'
-      : "Error: Your browser doesn't support geolocation."
+      : "Error: Your browser doesn't support geolocation.",
   );
 }
 
@@ -58,17 +58,17 @@ const places = [
     ratings: [
       {
         stars: 5,
-        comment: 'Great! But not many veggie options.'
+        comment: 'Great! But not many veggie options.',
       },
       {
         stars: 5,
-        comment: 'OMG! But not many veggie options.'
+        comment: 'OMG! But not many veggie options.',
       },
       {
         stars: 5,
-        comment: 'My favorite restaurant!'
-      }
-    ]
+        comment: 'My favorite restaurant!',
+      },
+    ],
   },
   {
     restaurantName: 'MeetBurger',
@@ -79,13 +79,13 @@ const places = [
     ratings: [
       {
         stars: 4,
-        comment: 'Great! But not many veggie options.'
+        comment: 'Great! But not many veggie options.',
       },
       {
         stars: 5,
-        comment: 'My favorite restaurant!'
-      }
-    ]
+        comment: 'My favorite restaurant!',
+      },
+    ],
   },
   {
     restaurantName: 'Bakery Crusta',
@@ -96,13 +96,13 @@ const places = [
     ratings: [
       {
         stars: 4,
-        comment: 'Great! But not many veggie options.'
+        comment: 'Great! But not many veggie options.',
       },
       {
         stars: 4,
-        comment: 'My favorite restaurant!'
-      }
-    ]
+        comment: 'My favorite restaurant!',
+      },
+    ],
   },
   {
     restaurantName: 'Trdelnik',
@@ -113,13 +113,13 @@ const places = [
     ratings: [
       {
         stars: 4,
-        comment: 'Great! But not many veggie options.'
+        comment: 'Great! But not many veggie options.',
       },
       {
         stars: 4,
-        comment: 'My favorite restaurant!'
-      }
-    ]
+        comment: 'My favorite restaurant!',
+      },
+    ],
   },
   {
     restaurantName: 'Las Adelitas',
@@ -130,13 +130,13 @@ const places = [
     ratings: [
       {
         stars: 3,
-        comment: 'Great! But not many veggie options.'
+        comment: 'Great! But not many veggie options.',
       },
       {
         stars: 3,
-        comment: 'My favorite restaurant!'
-      }
-    ]
+        comment: 'My favorite restaurant!',
+      },
+    ],
   },
   {
     restaurantName: 'Karavell',
@@ -147,13 +147,13 @@ const places = [
     ratings: [
       {
         stars: 2,
-        comment: 'Great! But not many veggie options.'
+        comment: 'Great! But not many veggie options.',
       },
       {
         stars: 2,
-        comment: 'My favorite restaurant!'
-      }
-    ]
+        comment: 'My favorite restaurant!',
+      },
+    ],
   },
   {
     restaurantName: 'BrewCoff Cafe',
@@ -164,33 +164,33 @@ const places = [
     ratings: [
       {
         stars: 2,
-        comment: 'Great! But not many veggie options.'
+        comment: 'Great! But not many veggie options.',
       },
       {
         stars: 2,
-        comment: 'My favorite restaurant!'
-      }
-    ]
+        comment: 'My favorite restaurant!',
+      },
+    ],
   },
   {
     restaurantName: 'Little Eataly',
     address: '4 st, Prague',
     location: {
       lat: 50.08541,
-      lng: 14.420918
+      lng: 14.420918,
     },
     averageRating: 2,
     ratings: [
       {
         stars: 2,
-        comment: 'Great! But not many veggie options.'
+        comment: 'Great! But not many veggie options.',
       },
       {
         stars: 2,
-        comment: 'My favorite restaurant!'
-      }
-    ]
-  }
+        comment: 'My favorite restaurant!',
+      },
+    ],
+  },
 ];
 
 console.log(places);
@@ -208,7 +208,7 @@ function showPlaces(data) {
 
     toggeRatingsBtn.onclick = function() {
       let displayValue = ul.style.display;
-      console.log(displayValue);
+
       if (!displayValue) {
         ul.style.display = 'block';
       } else {
@@ -228,6 +228,7 @@ function getReviews(data) {
   data.forEach(x => {
     let placeId = x.restaurantName;
     let ratings = x.ratings;
+
     ratings.forEach(r => {
       let stars = r.stars;
       let comment = r.comment;
@@ -240,6 +241,37 @@ function getReviews(data) {
 }
 
 getReviews(places);
+
+function addComment(data) {
+  data.forEach(x => {
+    let id = x.restaurantName;
+    const addCommentBtn = document.createElement('button');
+    addCommentBtn.setAttribute('class', 'commentBtn');
+    // addCommentBtn.innerHTML = 'add comment';
+    let ul = document.getElementById(id);
+    ul.appendChild(addCommentBtn);
+
+    let reviews = x.ratings;
+    console.log(reviews);
+    addCommentBtn.onclick = function() {
+      reviews.unshift({ stars: 5, comment: 'woooooow' });
+      displayAddedComment(places);
+      // getReviews(places);
+    };
+  });
+}
+addComment(places);
+
+function displayAddedComment(data) {
+  places.forEach(x => {
+    let reviews = x.ratings;
+
+    console.log(reviews[0]);
+  });
+}
+
+// render rating and list as components
+// create reusable form
 
 // use appendChild
 // createElement li

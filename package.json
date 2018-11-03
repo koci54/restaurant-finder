@@ -4,7 +4,7 @@
   "description": "simple app for project 7 at OC",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html"
   },
   "author": "koci54",
   "license": "ISC",

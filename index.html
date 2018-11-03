@@ -9,23 +9,84 @@
     crossorigin="anonymous">
   <title>Restaurant finder</title>
   <link rel="stylesheet" href="styles.css" />
+<!--
+  <script>
+  let map;
+  let infoWindow;
+
+   function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 40.0519752, lng: -76.314270999999 },
+      zoom: 15,
+      scrollwheel: false,
+      zoomControl: true
+    });
+
+    infoWindow = new google.maps.InfoWindow({ map: map });
+
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          infoWindow.setPosition(pos);
+          infoWindow.setContent("Location found.");
+          map.setCenter(pos);
+        },
+        function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(
+      browserHasGeolocation
+        ? "Error: The Geolocation service failed."
+        : "Error: Your browser doesn't support geolocation."
+    );
+  }
+
+  </script>
+-->
 </head>
 
 <body>
 
   <div id="map"></div>
+<div class='group-container'>
+  <div class="form-group">
+     <select id="star-select" class="form-control custom-select">
+         <option value="0" selected>show all</option>
+         <option value="1">*</option>
+         <option value="2">**</option>
+         <option value="3">***</option>
+         <option value="4">****</option>
+         <option value="5">*****</option>
+       </select>
+   </div>
+   </div>
+
+
 
   <h1>List of places</h1>
-  <div id="restaurants">
+  <div id="output"></div>
+
+
+
 
   </div>
-
-  <div id="names">
-
-  </div>
-  <script src="https://maps.google.com/maps/api/js?key=AIzaSyBkPOD_JvZ2A5JFPDenEgozAnTTjPMOhNM&callback=initMap" async
-    defer></script>
-  <script type="text/javascript" src="app.js"></script>
+  <script type="module" src="app.js"></script>
+  <!--script async defer src="https://maps.google.com/maps/api/js?key=AIzaSyBkPOD_JvZ2A5JFPDenEgozAnTTjPMOhNM&callback=initMap"></script-->
 </body>
 
 </html>

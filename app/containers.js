@@ -5,6 +5,7 @@ export function createContainers(data) {
 
     div.setAttribute("id", `${uniqueId}`);
     const list = document.getElementById("output");
+    list.innerHTML = '';
     list.appendChild(div);
   });
 }

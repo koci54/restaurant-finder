@@ -13,6 +13,7 @@ export function displayNames(data) {
     h3.setAttribute("avg-rating", `${avgRating}`);
     const uniqueId = x.place_id;
     const container = document.getElementById(`${uniqueId}`);
+    container.innerHTML = '';
     container.appendChild(h3);
   });
 }

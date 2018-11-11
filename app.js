@@ -1,43 +1,76 @@
 import places from './data'
-import { createContainers } from './app/containers';
-import { displayNames } from './app/displayNames';
-import { createUl } from './app/createUl';
-import { displayReviews } from './app/displayReviews';
-import { showStars } from './app/showStars';
-import { createButton } from './app/createButton'
-import { displayStarNumber } from './app/displayStarNumber'
-import { filterRestaurants } from './app/filterRestaurants'
+// import { createContainers } from './app/containers';
+// import { displayNames } from './app/displayNames';
+// import { createUl } from './app/createUl';
+// import { displayReviews } from './app/displayReviews';
+// import { showStars } from './app/showStars';
+// import { createButton } from './app/createButton'
+// import { displayStarNumber } from './app/displayStarNumber'
+// import { filterRestaurants } from './app/filterRestaurants'
 import { guid, addId } from './app/helpers'
+// import { displayPlaces } from './app/addPlace'
+
+import { addRestaurant } from './app/addRestaurant'
 // import { initMap } from './map/googleMap'getThree
 
-
-// load map
-//document.addEventListener('DOMContentLoaded', initMap);
-
-console.log(places);
-// add each place an ID
 addId(places);
 
-// create parent divs
-createContainers(places);
+// load map
 
-// render h3 onto a page
-displayNames(places);
 
-// ul hidden by default
-createUl(places);
 
-// display and append reviews
-displayReviews(places);
 
-// append star ratings
-showStars(places);
+addRestaurant(places, {
+  restaurantName: "testresto2!",
+  address: "13, Hradcanska st. Prague",
+  lat: 50.087617,
+  lng: 14.418274,
+  averageRating: 5,
+  ratings: [
+    {
+      stars: 5,
+      comment: "Great! But not many veggie options."
+    },
+    {
+      stars: 5,
+      comment: "OMG! But not many veggie options."
+    },
+    {
+      stars: 5,
+      comment: "My favorite restaurant!"
+    }
+  ]
+})
 
-// append and toggle button
-createButton(places);
 
-// get averageRating
-displayStarNumber(places)
+console.log(places);
 
-// test
-filterRestaurants(places)
+addRestaurant(places, {
+  restaurantName: "testresto3!",
+  address: "13, Hradcanska st. Prague",
+  lat: 50.087617,
+  lng: 14.418274,
+  averageRating: 5,
+  ratings: [
+    {
+      stars: 5,
+      comment: "Great! But not many veggie options."
+    },
+
+  ]
+})
+
+addRestaurant(places, {
+  restaurantName: "testresto4!",
+  address: "13, Hradcanska st. Prague",
+  lat: 50.087617,
+  lng: 14.418274,
+  averageRating: 5,
+  ratings: [
+    {
+      stars: 5,
+      comment: "Great! But not many veggie options."
+    },
+
+  ]
+})

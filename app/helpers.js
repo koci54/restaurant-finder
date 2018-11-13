@@ -22,19 +22,17 @@ export function guid() {
 }
 
 // give each place an unique ID
-export function addId(data) {
-  data.forEach(x =>{
-   if (!x.id) {
-     console.log('no id')
-     x.id = guid()
-   }
-   return x
- })
-}
+
+
+
 
 export function findRestaurant(data, restaurantId) {
   const restaurant = data.find(item => {
     return item.id === restaurantId
   })
   return restaurant
+}
+
+export function whenClicked(){
+  console.log('clicked');
 }

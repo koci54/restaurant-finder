@@ -13,11 +13,13 @@ import { guid, addId } from './app/helpers'
 import { addRestaurant } from './app/addRestaurant'
 // import { initMap } from './map/googleMap'getThree
 
-addId(places);
-
+places.forEach(x =>{
+ if (!x.id) {
+   console.log('no id')
+   x.id = guid()
+ }
+})
 // load map
-
-
 
 
 addRestaurant(places, {
@@ -39,38 +41,5 @@ addRestaurant(places, {
       stars: 5,
       comment: "My favorite restaurant!"
     }
-  ]
-})
-
-
-console.log(places);
-
-addRestaurant(places, {
-  restaurantName: "testresto3!",
-  address: "13, Hradcanska st. Prague",
-  lat: 50.087617,
-  lng: 14.418274,
-  averageRating: 5,
-  ratings: [
-    {
-      stars: 5,
-      comment: "Great! But not many veggie options."
-    },
-
-  ]
-})
-
-addRestaurant(places, {
-  restaurantName: "testresto4!",
-  address: "13, Hradcanska st. Prague",
-  lat: 50.087617,
-  lng: 14.418274,
-  averageRating: 5,
-  ratings: [
-    {
-      stars: 5,
-      comment: "Great! But not many veggie options."
-    },
-
   ]
 })
